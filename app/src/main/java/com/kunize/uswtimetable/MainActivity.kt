@@ -8,9 +8,11 @@ import android.util.Base64
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.kakao.adfit.ads.AdListener
 import com.kunize.uswtimetable.databinding.ActivityMainBinding
 import com.kunize.uswtimetable.dataclass.TimeData
+import com.kunize.uswtimetable.util.KeepStateNavigator
 import org.json.JSONArray
 import java.io.ByteArrayOutputStream
 
@@ -25,7 +27,13 @@ class MainActivity : AppCompatActivity() {
 
         val navigationFragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
         val navController = navigationFragment.navController
-        NavigationUI.setupWithNavController(binding.bottomNav, navController)
+
+        val keepNavigator = KeepStateNavigator(this, navigationFragment.childFragmentManager, R.id.fragment_container)
+        navController.navigatorProvider.addNavigator(keepNavigator)
+
+        navController.setGraph(R.navigation.nav_graph)
+
+        binding.bottomNav.setupWithNavController(navController)
 
         binding.bannerAdView.setClientId(getString(R.string.kakaoAdfitID))  // 할당 받은 광고단위 ID 설정
         binding.bannerAdView.setAdListener(object : AdListener {  // optional :: 광고 수신 리스너 설정

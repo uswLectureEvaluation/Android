@@ -5,12 +5,12 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/navigation_home">
 
-    <fragment
+    <keep_state_fragment
         android:id="@+id/navigation_home"
         android:name="com.kunize.uswtimetable.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
-    <fragment
+    <keep_state_fragment
         android:id="@+id/navigation_evaluation"
         android:name="com.kunize.uswtimetable.ui.evaluation.EvaluationFragment"
         android:label="fragment_evaluation"
@@ -21,8 +21,8 @@
         <action
             android:id="@+id/action_navigation_evaluation_to_lectureInfoFragment"
             app:destination="@id/lectureInfoFragment" />
-    </fragment>
-    <fragment
+    </keep_state_fragment>
+    <keep_state_fragment
         android:id="@+id/navigation_more"
         android:name="com.kunize.uswtimetable.ui.mypage.MyPageFragment"
         android:label="fragment_more"
@@ -30,8 +30,8 @@
         <action
             android:id="@+id/action_more_to_myPostFragment"
             app:destination="@id/myPostFragment" />
-    </fragment>
-    <fragment
+    </keep_state_fragment>
+    <keep_state_fragment
         android:id="@+id/searchResultFragment"
         android:name="com.kunize.uswtimetable.ui.search_result.SearchResultFragment"
         android:label="SearchResultFragment"
@@ -47,7 +47,7 @@
         <action
             android:id="@+id/action_searchResultFragment_to_lectureInfoFragment"
             app:destination="@id/lectureInfoFragment" />
-    </fragment>
+    </keep_state_fragment>
     <fragment
         android:id="@+id/lectureInfoFragment"
         android:name="com.kunize.uswtimetable.ui.lecture_info.LectureInfoFragment"
